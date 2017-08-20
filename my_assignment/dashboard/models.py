@@ -19,13 +19,19 @@ class Department(models.Model):
     department_name = models.CharField(max_length=2, choices=NAME, primary_key=True)
 
 class Patient(models.Model):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    priority = (
+    GENDER = (
+        ('m', 'Male'),
+        ('f', 'Female'),
+    )
+    PRIORITY = (
         ('1', 'Critical'),
         ('2', 'Serious'),
         ('3', 'Minor'),
     )
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    gender = models.CharField(max_length=1, choices=GENDER)
+    priority = models.CharField(max_length=1, choices=PRIORITY)
     being_seen = models.BooleanField(default=False)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     injury_description = models.CharField(max_length=400)
