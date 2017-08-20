@@ -3,8 +3,29 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from dashboard.forms import PatientForm, DoctorForm, NurseForm
 from dashboard.models import Patient, Doctor, Nurse, Department
+from django.contrib.auth import authenticate, login
+
 
 # Create your views here.
+def my_view(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            print("User is valid, active and authenticated")
+        else:
+            print("The password is valid, but the account has been disabled!")
+    else:
+        print("The username and password were incorrect.")
+
+def some_view(request):
+    if request.user.is_authenticated():
+        return redirect('/restricted')
+    else:
+        print("Try again.")
+        return redirect('/')
+
 def restricted(request):
     patients = Patient.objects.order_by('last_name')
     doctors = Doctor.objects.order_by('last_name')
