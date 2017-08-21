@@ -32,8 +32,8 @@ class Patient(models.Model):
     last_name = models.CharField(max_length=30)
     gender = models.CharField(max_length=1, choices=GENDER)
     priority = models.CharField(max_length=1, choices=PRIORITY)
-    being_seen = models.BooleanField(default=False)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    room_number = models.IntegerField(blank=True, null=True)
     injury_description = models.CharField(max_length=400)
     allergies = models.CharField(max_length=150)
 
@@ -50,10 +50,10 @@ class Doctor(models.Model):
 
 class Nurse(models.Model):
     TITLE = (
-        ('doctor', 'Dr.'),
-        ('mr', 'Mr.'),
-        ('mrs', 'Mrs.'),
-        ('miss', 'Miss'),
+        ('Doctor', 'Dr.'),
+        ('Mr', 'Mr.'),
+        ('Mrs', 'Mrs.'),
+        ('Miss', 'Miss'),
     )
     title = models.CharField(max_length=6, choices=TITLE)
     first_initial = models.CharField(max_length=4)

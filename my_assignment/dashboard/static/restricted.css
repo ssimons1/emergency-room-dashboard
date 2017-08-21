@@ -1,0 +1,33 @@
+tr:nth-child(even) {
+	background-color: #f2f2f2
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 5px;
+  border: 1px solid black;
+}
+
+.container{
+	margin: 10px;
+}
+
+.all{
+	margin: 20px;
+}
+
+.col-md-6{
+	padding: 0;
+}
+
+.doctor_table{
+	overflow: scroll;
+}
+
+.nurse_table{
+	overflow: scroll;
+}
+
+.table_title{
+	text-align: center;
+}

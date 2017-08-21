@@ -5,7 +5,7 @@ from dashboard.models import Patient, Doctor, Nurse
 class PatientForm(forms.ModelForm):
     class Meta:
         model = Patient
-        fields = ['first_name', 'last_name', 'gender', 'priority', 'being_seen', 'department', 'injury_description', 'allergies']
+        fields = ['first_name', 'last_name', 'gender', 'priority', 'department', 'room_number', 'injury_description', 'allergies']
 
 
 class DoctorForm(forms.ModelForm):

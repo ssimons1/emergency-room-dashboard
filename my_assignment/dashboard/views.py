@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from dashboard.forms import PatientForm, DoctorForm, NurseForm
 from dashboard.models import Patient, Doctor, Nurse, Department
@@ -7,25 +10,22 @@ from django.contrib.auth import authenticate, login
 
 
 # Create your views here.
-def my_view(request):
-    username = request.POST['username']
-    password = request.POST['password']
+
+def submit_login(request):
+    username = request.POST.get('username')
+    password = request.POST.get('password')
     user = authenticate(request, username=username, password=password)
-    if user is not None:
+    if user:
         if user.is_active:
-            print("User is valid, active and authenticated")
+            return redirect('/restricted')
         else:
-            print("The password is valid, but the account has been disabled!")
+            return redirect('/login')
     else:
-        print("The username and password were incorrect.")
+        return redirect('/login')
 
-def some_view(request):
-    if request.user.is_authenticated():
-        return redirect('/restricted')
-    else:
-        print("Try again.")
-        return redirect('/')
 
+
+@login_required
 def restricted(request):
     patients = Patient.objects.order_by('last_name')
     doctors = Doctor.objects.order_by('last_name')
@@ -52,7 +52,7 @@ def restricted(request):
             if nurse_form.is_valid():
                 nurse = nurse_form.save(commit=False)
                 nurse.save()
-                return redirect('restricted')
+                return redirect('/restricted')
 
     else:
         patient_form = PatientForm()
@@ -63,7 +63,6 @@ def restricted(request):
                "doctors": doctors,
                "nurses": nurses,
                "patient_form": patient_form,
-               "doctor_form": doctor_form,
-               "nurse_form": nurse_form}
+               }
 
     return render(request, "restricted.html", context)
