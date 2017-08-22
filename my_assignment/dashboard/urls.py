@@ -8,5 +8,5 @@ urlpatterns = [
     url(r'^$', views.dashboard, name='index'),
     url(r'^login/$', login, name="login"),
     url(r'^restricted/$', views.restricted, name="restricted"),
-    url(r'^logout/$', logout, {'next_page': '/'}),
+    url(r'^logout/$', views.logout),
 ]

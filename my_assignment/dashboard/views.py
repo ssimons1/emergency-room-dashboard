@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
@@ -8,7 +9,7 @@ from django.shortcuts import render, redirect
 from dashboard.datasets import doctors_unavailable_available, nurses_unavailable_available
 from dashboard.forms import PatientForm, DoctorForm, NurseForm
 from dashboard.models import Patient, Doctor, Nurse, Department
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
@@ -30,8 +31,13 @@ def submit_login(request):
         return redirect('/login')
 
 
-# Restricted dashboard which will open once successfully logged in
+# Logout page
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
 
+
+# Restricted dashboard which will open once successfully logged in
 
 @login_required
 def restricted(request):

@@ -1,50 +1,31 @@
-tr:nth-child(even) {
-	background-color: #f2f2f2
+body {
+	background-color: #dbd9d9;
+	font-family: 'Raleway', sans-serif;
 }
 
 table {
-  border-collapse: separate;
-  border-spacing: 5px;
-  border: 1px solid black;
-}
-
-.container{
-	margin: 10px;
-}
-
-.all{
-	margin: 20px;
-}
-
-.col-md-6{
-	padding: 0;
-}
-
-.doctor_table{
-	overflow: scroll;
-}
-
-.nurse_table{
-	overflow: scroll;
-}
-
-.table_title{
-	text-align: center;
-}
-
-.add_forms_div {
-	border: 1px dashed black;
-	width: 92%;
-	margin: auto;
-}
-
-.main {
 	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td {
+	border: 1px dotted black;
+	text-decoration: blink;
+	background-color: #f7f2f2;
+}
+
+th {
+	font-weight: bold;
+}
+
+.container {
+	margin-left: 0;
+	margin-right: 2px;
 }
 
 .plus_box {
 	font-size: 16px;
-	background-color: #66CDAA;
+	background-color: #8f57bf;
 	color: white;
 	border-radius: 3px;
 	cursor: pointer;
@@ -56,6 +37,10 @@ table {
 	padding-right: 6px;
 }
 
+.add_forms_div {
+	width: 100%;
+}
+
 .fa.fa-plus {
 	color: white;
 	padding: 10%;
@@ -63,4 +48,44 @@ table {
 
 input, select {
 	margin-left: 10px;
+}
+
+.doctors_nurses.col-md-6 {
+
+}
+
+.info.row {
+	margin: 0;
+}
+
+.form.row {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.label {
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left: 37%;
+}
+
+.doctor_form_div, .nurse_form_div, .patient_form_div {
+	text-align: center;
+	width: 100%;
+	background-color: rgba(167, 101, 237, 0.2)
+}
+
+.col-md-6 {
+	padding: 12px;
+}
+
+.fa.fa-home {
+	width: 200px;
+}
+
+@media (max-width: 1180px) {
+	.col-md-6 {
+		display: block;
+	}
 }
