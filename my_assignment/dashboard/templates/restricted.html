@@ -3,7 +3,7 @@
 <head>
 	<title>Restricted Dashboard</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-	<script src="https://use.fontawesome.com/af03425ffb.js"></script>
+	<script src="https://use.fontawesome.com/058bc84aee.js"></script>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
 	{% load staticfiles %}
 	<link rel='stylesheet' type="text/css" href="{% static 'restricted.css' %}">
@@ -65,7 +65,7 @@
 					<tr>
 						<td class="last_name d">{{ d.last_name }}</td>
 						<td class="title d">{{ d.title }}</td>
-						<td class="initial d">{{ d.initial }}</td>
+						<td class="initial d">{{ d.first_initial }}</td>
 						<td class="occupied d">{{ d.occupied }}</td>
 						<td class="department d">{{ d.department }}</td>
 						<td class="end_shift d">{{ d.time_finish_shift }}</td>					
@@ -96,7 +96,7 @@
 					<tr>
 						<td class="last_name n">{{ n.last_name }}</td>
 						<td class="title n">{{ n.title }}</td>
-						<td class="initial n">{{ n.initial }}</td>
+						<td class="initial n">{{ n.first_initial }}</td>
 						<td class="occupied n">{{ n.occupied }}</td>
 						<td class="department n">{{ n.department }}</td>
 						<td class="end_shift n">{{ n.time_finish_shift }}</td>				
@@ -110,8 +110,23 @@
 				</table>
 			</div>
 		</div>
+		<div class="add_forms_div patient">
+			<div class="plus_box">
+				<i class="fa fa-plus" aria-hidden="true"></i>Patient
+			</div>
+		</div>
+		<div class="add_forms_div doctor">
+			<div class="plus_box">
+				<i class="fa fa-plus" aria-hidden="true"></i>Doctor
+			</div>
+		</div>
+		<div class="add_forms_div nurse">
+			<div class="plus_box">
+				<i class="fa fa-plus" aria-hidden="true"></i>Nurse
+			</div>
+		</div>
 		<div class = "patient_form_div">
-			<form class="patient_form" action="/restricted" method="post">
+			<form class="patient_form" action="/restricted/" method="post">
 				{% csrf_token %}
 				<div class="user_input all">
 					{{ patient_form }}
@@ -120,7 +135,39 @@
 					<button id="submit_post" type="submit">
 						<i class="fa fa-check"></i>
 					</button>
-					<button id="close_post" type="reset">
+					<button id="close_post_patient" type="reset">
+						<i class="fa fa-times"></i>
+					</button>
+				</div>
+			</form>
+		</div>
+		<div class = "doctor_form_div">
+			<form class="doctor_form" action="/restricted/" method="post">
+				{% csrf_token %}
+				<div class="user_input all">
+					{{ doctor_form }}
+				</div>
+				<div class="buttons">
+					<button id="submit_post" type="submit">
+						<i class="fa fa-check"></i>
+					</button>
+					<button id="close_post_doctor" type="reset">
+						<i class="fa fa-times"></i>
+					</button>
+				</div>
+			</form>
+		</div>
+		<div class = "nurse_form_div">
+			<form class="nurse_form" action="/restricted/" method="post">
+				{% csrf_token %}
+				<div class="user_input all">
+					{{ nurse_form }}
+				</div>
+				<div class="buttons">
+					<button id="submit_post" type="submit">
+						<i class="fa fa-check"></i>
+					</button>
+					<button id="close_post_nurse" type="reset">
 						<i class="fa fa-times"></i>
 					</button>
 				</div>
@@ -130,6 +177,6 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="{% static 'JS/restricted.js' %}"></script>
+	<script type="text/javascript" src="{% static 'restricted.js' %}"></script>
 </body>
 </html>

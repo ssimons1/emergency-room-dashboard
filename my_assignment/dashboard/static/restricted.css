@@ -31,3 +31,36 @@ table {
 .table_title{
 	text-align: center;
 }
+
+.add_forms_div {
+	border: 1px dashed black;
+	width: 92%;
+	margin: auto;
+}
+
+.main {
+	width: 100%;
+}
+
+.plus_box {
+	font-size: 16px;
+	background-color: #66CDAA;
+	color: white;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	text-align: center;
+	margin-right: 45%;
+	margin-left: 45%;
+	padding-right: 6px;
+}
+
+.fa.fa-plus {
+	color: white;
+	padding: 10%;
+}
+
+input, select {
+	margin-left: 10px;
+}

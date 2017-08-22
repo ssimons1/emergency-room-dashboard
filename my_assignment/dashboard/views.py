@@ -11,6 +11,10 @@ from django.contrib.auth import authenticate, login
 
 # Create your views here.
 
+# Homepage with public dashboard
+
+
+# Login page
 def submit_login(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
@@ -23,8 +27,7 @@ def submit_login(request):
     else:
         return redirect('/login')
 
-
-
+# Restricted dashboard which will open once successfully logged in
 @login_required
 def restricted(request):
     patients = Patient.objects.order_by('last_name')
@@ -63,6 +66,8 @@ def restricted(request):
                "doctors": doctors,
                "nurses": nurses,
                "patient_form": patient_form,
+               "doctor_form": doctor_form,
+               "nurse_form": nurse_form,
                }
 
     return render(request, "restricted.html", context)

@@ -7,21 +7,25 @@ from django.db import models
 
 class Department(models.Model):
     NAME = (
-        ('N', 'Neuro'),
-        ('C', 'Cardio'),
-        ('T', 'Trauma'),
-        ('E', 'ENT'),
-        ('GS', 'General Surgery'),
-        ('M', 'Maternity'),
-        ('O', 'Oncology'),
-        ('U', 'Urology'),
+        ('Neuro', 'Neuro'),
+        ('Cardio', 'Cardio'),
+        ('Trauma', 'Trauma'),
+        ('ENT', 'ENT'),
+        ('General Surgery', 'General Surgery'),
+        ('Maternity', 'Maternity'),
+        ('Oncology', 'Oncology'),
+        ('Urology', 'Urology'),
     )
-    department_name = models.CharField(max_length=2, choices=NAME, primary_key=True)
+    department_name = models.CharField(max_length=15, choices=NAME, primary_key=True)
+
+    def __str__(self):
+        return self.department_name
+
 
 class Patient(models.Model):
     GENDER = (
-        ('m', 'Male'),
-        ('f', 'Female'),
+        ('M', 'M'),
+        ('F', 'F'),
     )
     PRIORITY = (
         ('1', 'Critical'),
@@ -37,9 +41,12 @@ class Patient(models.Model):
     injury_description = models.CharField(max_length=400)
     allergies = models.CharField(max_length=150)
 
+    def __str__(self):
+        return self.last_name + ", " + self.first_name
+
 class Doctor(models.Model):
     TITLE = (
-        ('Doctor', 'Dr.'),
+        ('Dr.', 'Dr.'),
     )
     title = models.CharField(max_length=6, choices=TITLE)
     first_initial = models.CharField(max_length=4)
@@ -48,11 +55,14 @@ class Doctor(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     time_finish_shift = models.TimeField('Time finished shift')
 
+    def __str__(self):
+        return self.title + " " + self.first_initial + " " + self.last_name
+
 class Nurse(models.Model):
     TITLE = (
-        ('Doctor', 'Dr.'),
-        ('Mr', 'Mr.'),
-        ('Mrs', 'Mrs.'),
+        ('Dr.', 'Dr.'),
+        ('Mr.', 'Mr.'),
+        ('Mrs.', 'Mrs.'),
         ('Miss', 'Miss'),
     )
     title = models.CharField(max_length=6, choices=TITLE)
@@ -61,4 +71,9 @@ class Nurse(models.Model):
     occupied = models.BooleanField(default=False)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     time_finish_shift = models.TimeField('Time finished shift')
+
+    def __str__(self):
+        return self.title + " " + self.first_initial + " " + self.last_name
+
+
 
