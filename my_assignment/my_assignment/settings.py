@@ -71,8 +71,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'my_assignment.wsgi.application'
 
 #Login URLS
-
-LOGIN_URL = 'django.contrib.auth.views.login'
+# django.contrib.auth.views.login
+LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/restricted'
 
 
