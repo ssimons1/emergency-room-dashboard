@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+
+from dashboard.datasets import doctors_unavailable_available, nurses_unavailable_available
 from dashboard.forms import PatientForm, DoctorForm, NurseForm
 from dashboard.models import Patient, Doctor, Nurse, Department
 from django.contrib.auth import authenticate, login
@@ -27,7 +29,10 @@ def submit_login(request):
     else:
         return redirect('/login')
 
+
 # Restricted dashboard which will open once successfully logged in
+
+
 @login_required
 def restricted(request):
     patients = Patient.objects.order_by('last_name')
@@ -45,13 +50,13 @@ def restricted(request):
                 patient.save()
                 return redirect('/restricted')
 
-        elif doctor_form:
+        if doctor_form:
             if doctor_form.is_valid():
                 doctor = doctor_form.save(commit=False)
                 doctor.save()
                 return redirect('/restricted')
 
-        elif nurse_form:
+        if nurse_form:
             if nurse_form.is_valid():
                 nurse = nurse_form.save(commit=False)
                 nurse.save()
@@ -71,3 +76,18 @@ def restricted(request):
                }
 
     return render(request, "restricted.html", context)
+
+
+def dashboard(request):
+    patients = Patient.objects.order_by('last_name')
+    context = {"doctor_data": doctors_unavailable_available(),
+               "nurse_data": nurses_unavailable_available(),
+               "patients": patients,
+               }
+
+    return render(request, "homepage.html", context)
+
+
+
+
+
