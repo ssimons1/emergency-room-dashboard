@@ -11,8 +11,15 @@
 </head>
 <body>
 	<div class="container">
-		<div class="dashboard row">
+		<div class="buttons row">
+			<div class="home_icon_div">
+				<a href="/restricted"><button id="restricted_button"><i class="fa fa-key" aria-hidden="true"></i> Restricted Data</button></a>
+				<a href="/logout/"><button id="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button></a>
+			</div>
+		</div>
+		<div class="first row">
 			<div class="patients col-md-6">
+				<label class="label" for="patient_public_info">Patients:</label>
 				<table class="patient_public_info">
 					<th>LastName</th>
 					<th>FirstName</th>
@@ -35,26 +42,29 @@
 						</div>
 					{% endif %}
 				</table>
-				<br>
-				<div class="restricted_button_div">
-				<a href="/restricted"><button id="restricted_button">Restricted Data</button></a>
-				</div>
 			</div>
-			<div class="col-md-6">
-				<div class="doctor row">
+			<div class="doctor col-md-6">
+				<div class="doctor_chart">
 					<label class="label" for="doctorChart">Doctors:</label>
 					<canvas id="doctorChart" width="600" height="300"></canvas>
 				</div>
+			</div>
+		</div>
+		<div class="second row">
+			<div class="department col-md-6">
+				<div class="department_chart">
+					<label class="label" for="departmentChart">Departments:</label>
+					<canvas id="departmentChart" width="600" height="400"></canvas>
+				</div>
+			</div>
+			<div class="nurse col-md-6">	
 				<div class="nurse row">
 					<label class="label" for="nurseChart">Nurses:</label>
 					<canvas id="nurseChart" width="600" height="300"></canvas>
 				</div>
 			</div>
-		</div>
-		
+		</div>		
 	</div>
-
-
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
@@ -67,7 +77,7 @@
 
 		var ctx1 = $("#doctorChart");
 
-		var myPieChart = new Chart(ctx1,{
+		var docPieChart = new Chart(ctx1,{
 		    type: 'pie',
 		    data: {
 		    	labels: ['Available doctors','Occupied doctors'],
@@ -79,11 +89,11 @@
 		    },
 		});	
 
-	// // Nurse pie chart JS
+	// Nurse pie chart JS
 
 		var ctx2 = $("#nurseChart");
 
-		var myPieChart = new Chart(ctx2,{
+		var nursePieChart = new Chart(ctx2,{
 		    type: 'pie',
 		    data: {
 		    	labels: ['Available nurses', 'Occupied nurses'],
@@ -95,6 +105,21 @@
 		    }
 		});	
 
+	//Department bar chart JS
+
+		var ctx3 = $("#departmentChart");
+
+		var myBarChart = new Chart(ctx3, {
+		    type: 'bar',
+		    data: {
+		    	labels: ['Neurology', 'Cardiology', 'Trauma', 'ENT', 'General Surgery', 'Maternity', 'Oncology', 'Urology'],
+		    	datasets: [{
+		    		label: "No. of patients",
+		    		backgroundColor: "#7729d1",
+		    		data: {{ department_data }}
+		    	}]
+		    }
+		});
 
 
 </script>

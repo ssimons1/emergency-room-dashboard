@@ -10,12 +10,17 @@ body {
 }
 
 .container {
-    margin-top: 34px;
+    margin-top: 10px;
     font-family: 'Raleway', sans-serif;
+    border: 1px dashed #c0c0c0;
 }
 
-.nurse.row {
-	padding-top: 20px;
+.buttons.row {
+	margin-top: 10px;
+}
+
+.patient_public_info {
+	overflow: scroll;
 }
 
 th {
@@ -25,8 +30,6 @@ th {
 }
 
 td, th{
-	border: 1px dotted black;
-	text-decoration: blink;
 	background-color: #f7f2f2;
 }
 
@@ -35,14 +38,45 @@ td {
 }
 
 table {
-  	border-collapse: collapse;
-  	border-spacing: 2px;
+  	border-collapse: separate;
  	width: 100%;
- 	overflow: scroll;
+}
+
+.patients.col-md-6 {
+	overflow-y: scroll;
 }
 
 #restricted_button {
-	border-radius: 6px;
-	cursor: pointer;
+    border-radius: 6px;
+    cursor: pointer;
+	background-color: whitesmoke;
+    font-size: small;
 }
 
+.home_icon_div {
+    width: 100%;
+    text-align: right;
+}
+
+#logout {
+    border-radius: 6px;
+    cursor: pointer;
+	background-color: whitesmoke;
+    font-size: small;
+}
+
+.second.row {
+	padding-top: 40px;
+}
+
+.row{
+	margin: 0;
+}
+
+.first.row {
+	height: 350px
+}
+
+.col-md-6 {
+/*	border: 1px solid lightgrey;*/
+}

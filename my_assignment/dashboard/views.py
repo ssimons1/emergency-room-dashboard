@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
-from dashboard.datasets import doctors_unavailable_available, nurses_unavailable_available
+from dashboard.datasets import doctors_unavailable_available, nurses_unavailable_available, department_patients
 from dashboard.forms import PatientForm, DoctorForm, NurseForm
 from dashboard.models import Patient, Doctor, Nurse, Department
 from django.contrib.auth import authenticate, login, logout
@@ -89,6 +89,7 @@ def dashboard(request):
     context = {"doctor_data": doctors_unavailable_available(),
                "nurse_data": nurses_unavailable_available(),
                "patients": patients,
+               "department_data": department_patients(),
                }
 
     return render(request, "homepage.html", context)

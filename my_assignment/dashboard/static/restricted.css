@@ -4,13 +4,11 @@ body {
 }
 
 table {
-	width: 100%;
-	border-collapse: collapse;
+  	border-collapse: separate;
+ 	width: 100%;
 }
 
 th, td {
-	border: 1px dotted black;
-	text-decoration: blink;
 	background-color: #f7f2f2;
 }
 
@@ -18,15 +16,16 @@ th {
 	font-weight: bold;
 }
 
-.container {
+.container-fluid {
 	margin-left: 0;
 	margin-right: 2px;
+	margin-bottom: 20px;
 }
 
 .plus_box {
 	font-size: 16px;
-	background-color: #8f57bf;
-	color: white;
+	background-color: rgba(143, 28, 160, 0.2);
+	color: black;
 	border-radius: 3px;
 	cursor: pointer;
 	margin-top: 1%;
@@ -42,7 +41,7 @@ th {
 }
 
 .fa.fa-plus {
-	color: white;
+	color: black;
 	padding: 10%;
 }
 
@@ -50,12 +49,9 @@ input, select {
 	margin-left: 10px;
 }
 
-.doctors_nurses.col-md-6 {
-
-}
-
 .info.row {
 	margin: 0;
+	height: 450px;
 }
 
 .form.row {
@@ -67,21 +63,58 @@ input, select {
     font-size: 30px;
     font-weight: bold;
     text-decoration: underline;
-    margin-left: 37%;
+    width: 100%;
+    background-color: rgba(143, 28, 160, 0.2);
+    border-radius: 2px;
 }
 
 .doctor_form_div, .nurse_form_div, .patient_form_div {
-	text-align: center;
 	width: 100%;
-	background-color: rgba(167, 101, 237, 0.2)
+	background-color: rgba(143, 28, 160, 0.2);
+	padding: 10px;
 }
 
 .col-md-6 {
 	padding: 12px;
 }
 
-.fa.fa-home {
-	width: 200px;
+.buttons.row {
+	height: 24px;
+}
+
+.home_icon_div {
+    width: 98%;
+    text-align: right;
+}
+
+#home_dashboard {
+    margin: 4px;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: whitesmoke;
+    font-size: small;
+}
+
+#logout {
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: whitesmoke;
+    font-size: small;
+}
+
+.doctor.row {
+	height: 220px;
+    overflow-y: scroll;
+}
+
+.nurse.row {
+	padding-top: 24px;
+	overflow-y: scroll;
+	height: 220px;
+}
+
+.patients.col-md-6 {
+	overflow-y: scroll;
 }
 
 @media (max-width: 1180px) {
