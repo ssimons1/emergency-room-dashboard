@@ -21,7 +21,7 @@
 			<div class="patients col-md-6">
 				<label class="label" for="patient_table">Patients</label>
 				<table class="patient_table">
-					<tr>
+					<tr class="table_row">
 						<th>L.Name</th>
 						<th>F.Name</th>
 						<th>Gender</th>
@@ -33,7 +33,7 @@
 					</tr>
 					{% if patients.exists %}
 					{% for p in patients %}
-					<tr>
+					<tr class="table_row">
 						<td class="last_name p">{{ p.last_name }}</td>
 						<td class="first_name p">{{ p.first_name }}</td>
 						<td class="gender p">{{ p.gender }}</td>
@@ -55,7 +55,7 @@
 				<div class="doctor row">
 					<label class="label" for="doctor_table">Doctors</label>
 					<table class="doctor_table">
-						<tr>
+						<tr class="table_row">
 							<th>L.Name</th>
 							<th>Title</th>
 							<th>Initial</th>
@@ -65,7 +65,7 @@
 						</tr>
 						{% if doctors.exists %}
 						{% for d in doctors %}
-						<tr>
+						<tr class="table_row">
 							<td class="last_name d">{{ d.last_name }}</td>
 							<td class="title d">{{ d.title }}</td>
 							<td class="initial d">{{ d.first_initial }}</td>
@@ -84,7 +84,7 @@
 				<div class="nurse row">
 					<label class="label" for="nurse_table">Nurses</label>
 					<table class="nurse_table">				
-						<tr>
+						<tr class="table_row">
 							<th>L.Name</th>
 							<th>Title</th>
 							<th>Initial</th>
@@ -94,7 +94,7 @@
 						</tr>
 						{% if nurses.exists %}
 						{% for n in nurses %}
-						<tr>
+						<tr class="table_row">
 							<td class="last_name n">{{ n.last_name }}</td>
 							<td class="title n">{{ n.title }}</td>
 							<td class="initial n">{{ n.first_initial }}</td>

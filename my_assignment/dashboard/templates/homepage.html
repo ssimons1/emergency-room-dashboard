@@ -116,9 +116,20 @@
 		    	datasets: [{
 		    		label: "No. of patients",
 		    		backgroundColor: "#7729d1",
-		    		data: {{ department_data }}
+		    		data: {{ department_data }},
 		    	}]
+		    },
+		    options: {
+		    	scales: {
+		    		yAxes : [{
+		    			display: true,
+		    			ticks: {
+		    				beginAtZero: true,
+		    			}
+		    		}]
+		    	}
 		    }
+
 		});
 
 
